@@ -1,3 +1,6 @@
+//ALGO NO ME JALO, SIGO EDITANDO
+
+
 let cola = new Array();
 	function resp(){
 		let op = document.getElementById('opcion').value;
@@ -9,5 +12,3 @@ let cola = new Array();
 				}
 				cola.pop();
 			}
-
-		
