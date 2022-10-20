@@ -1,33 +1,91 @@
 
-//TODAVÍA NO ESTA LISTO JEJE
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Colas en Javascript</title>
-	<script src="Colas.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Arreglos con JavaScript</title>
+
+<script type="text/javascript">
+	let cola = new Array();
+	function resp(){
+		let op = document.getElementById('opcion').value;
+		let item = 1;
+		switch(op){
+			case '1':
+				alert("Para salir del ciclo de insersion, enviar un 0 como dato")
+				while(item != '0'){
+					item = prompt("Tecle un dato:", "");
+					cola.push(item);
+				}
+				cola.pop();
+				break;
+			case '2': 
+				imprimeCola(cola);
+				break;
+			case '3': 
+				item = prompt("Dato a buscar:","");
+				extraerElemento(cola,item,0);
+				break;
+			case '4':
+				alert("Elemento a extraer:" + cola.pop());
+				break;
+			case '5':
+				item = prompt("Dato a eliminar:","");
+				extraerElemento(cola,item,1);
+				break;
+			case '6':
+				alert("Cantidad de elementos en la cola = "+  cola.length);
+				break;
+			case '7':
+				cola = [];
+				alert("Cola Vacía");
+				break;
+			case '8':
+				cola = [];
+				alert("Bye");
+				break;
+		}
+	}
+	function imprimeCola(cola){
+		if(cola.length > 0){
+			for(let i = 0; i < cola.length ; i ++){
+					console.log("pila[" + i + "] = " + cola[i]);
+			}
+		}else{
+			console.log("Pila Vacia");
+		}
+	
+	}
+	function extraerElemento(cola,elemento,del){
+		let indice = cola.indexOf(elemento);
+		if(indice > -1){
+			if(del == 1)
+				alert("Eliminar elemento:" + cola.splice(indice,1)); 
+
+			else
+				alert(elemento + " se encuentra en la posición: " + indice);
+		}else{
+			alert("El elemento " + elemento + ", NO se encuentra en el arreglo");
+		}
+	}
+</script>
 </head>
+
 <body>
-<center><h1>Aplicacion de Colas en JavaScript y HTML</h1></center>
-	<br>
-	
-  <label> Crear cola</label>
-  <button id="opcion" onclick="resp();">Enviar</button><br>
-  <label>Mostrar elementos de la cola</label>
-  <button onclick ="();">Enviar</button>
-  <label>Buscar un elemento </label>
-  <button id="" onclick="();">Enviar</button><br>
-  <label>Extraer elemento</label>
-  <button id="" onclick="();">Enviar</button><br>
-  <label>Mostrar cantidad de elementos en cola</label>
-  <button id="" onclick="();">Enviar</button><br>
-  <label> Limpiar cola</label>
-  <button id="" onclick="();">Enviar</button><br>
-   <label>Salir</label>
-  <button id="" onclick="();">Enviar</button><br>
-	
-   
-
-
+	<center><h1>Aplicacion de Colas en JavaScript y HTML</h1></center><br>
+	<ol>
+		<li>Crear Cola</li>
+		<li> Mostrar elementos de la cola</li>
+		<li>Buscar un elemento</li>
+		<li>Extraer elemento</li>
+		<li>Mostrar cantidad de elementos en cola</li>
+		<li>Limpiar cola</li>
+		<li>Salir</li>
+	</ol>
+	<label for="opcion">Seleccione una opción del menú:</label>
+	<input type="number" name="opcion" id="opcion" min='1' max = '7'>
+	<center><button type="button" id="btnEnviar" onclick="resp();">Enviar Selección</button></center>
 </body>
+
 </html>
